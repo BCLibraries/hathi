@@ -1,0 +1,12 @@
+mdp.39015030491271	deny	und	000047790		MiU	000047790	41054096			08015898	Report.	1855?]-	bib	2012-11-04 19:30:07	0	9999	miu	eng	SE
+mdp.39015030491289	allow	pd	000047790	1897-1918	MiU	000047790	41054096			08015898	Report.	1855?]-	bib	2013-05-14 19:25:04	0	1918	miu	eng	SE
+mdp.39076000047790	deny	ic	000642872	v. 15 July-Dec 1975	MiU	000642872	1514447		0004-4687	64044237	Asian survey.	University of California Press [etc.], 1961-	bib	2013-05-23 04:25:35	0	1975	cau	eng	SE
+inu.30000047790112	deny	ic	001222910	v.1	INU	2907907	9292080			32008655	Homeri Ilias / edidit Thomas W. Allen.	e typographio Clarendioniano, 1931.	bib	2009-10-14 03:30:18	0	1931	it 	eng	BK
+inu.30000047790336	allow	pd	001370545		INU	963593	626778			12039586	Early English prose romances : with bibliographical and historical introductions / Ed. by William J. Thoms, F. S. A.	Nattali and Bond, 1858.	bib	2012-10-09 19:30:09	0	1858	enk	eng	BK
+inu.32000004779072	allow	pdus	006003705		INU	2423694	26430275				Cosmographiae introductio cum quibusdam geometriae ac astronomiae principiis ad eam rem necessariis, Insuper quatuor Americi Vespucij nauigationes ...	s.n., ca. 1900]	bib	2009-11-09 22:30:28	0	1900	xx 	lat	BK
+inu.30000047790765	allow	pd	006028908		INU	1030802	5856080				Under the rainbow : a history of its service in the war against Germany / Battery F, 150th F. A.	the Battery, 1919.	bib	2012-08-26 19:30:11	1	1919	inu	eng	BK
+inu.30000047790807	deny	ic	006033073		INU	1036903	235357	0531020053		71161838 /AC/r84	When France was de Gaulle.	Watts [1971]	bib	2009-10-18 23:30:29	0	1971	nyu	eng	BK
+inu.30000047790773	deny	ic	006066177		INU	1031456	8091477				Rainbow Hoosier / Elmer W. Sherwood ; illustrated by Russel Cottingham.	Printing Arts Co., [192-].	bib	2009-06-05 22:30:23	0	1929	inu	eng	BK
+inu.30000047790492	deny	ic	006071165	v.3	INU	3241611	28775224			54045793	Nerej, un village d'une région archaïque; monographie sociologique.	Institut de sciences sociales de Roumanie [1939]	bib	2009-10-16 23:30:28	0	1939	rm 	fre	BK
+inu.30000047790690	deny	ic	006782900		INU	5740123	54215433				Gdi͡e dokumenty starsheĭ istorii Podkarpatskoĭ Rusi? : O mezhevykh nazvanii͡akh / podaet I͡Ador N. Stripskiĭ.	Tip. Shkolʹnoĭ pomoshchi, 1924.	bib	2009-11-11 21:30:08	0	1924	un 	rus	BK
+inu.39000004779067	deny	ic	006955689		INU	2264193	17333650	8429722548			Vilaniu / de Narcís Oller.	Edicions 62, 1985.	bib	2009-10-09 21:30:14	0	1985	sp 	cat	BK
