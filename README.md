@@ -2,6 +2,7 @@
 
 The first step is to get Hathi MARC records for volumes that are public domain in the US (pdus) from the Hathi OAI feed.
 
+- Use the [BCLibraries oai_harvester](https://github.com/BCLibraries/oai_harvester) scripts
 - [OAI feed documentation](https://www.hathitrust.org/data)
 - Use the from and until arguments to harvest only those records that were created, deleted, or modified within a specified date range. 
 - If you are doing a complete reload, omit the from argument or use the [identify](http://quod.lib.umich.edu/cgi/o/oai/oai?verb=Identify) verb to find the date stamp of the earliest record.
