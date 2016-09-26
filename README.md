@@ -1,7 +1,3 @@
-# Requirements
-
-- [Saxon](http://saxon.sourceforge.net/)
-
 # Get MARC Records From Hathi OAI
 
 The first step is to get Hathi MARC records for volumes that are public domain in the US (pdus) from the Hathi OAI feed.
@@ -15,10 +11,42 @@ http://quod.lib.umich.edu/cgi/o/oai/oai?verb=ListRecords&metadataPrefix=marc21&s
 
 # Use HathiFiles to Enhance OAI MARC Records
 
-- Edit enhance.sh to point to the latest verison of HATHIFILES
-- Run enhance.sh
+- Replace OAI title with HathiFiles title
+- Use Gov Docs flag in HathiFiles to add flag compatible with our local practice
 
-## Extra:  Brian's Steps for Huge Years
+
+# Get HathiTrust Record Numbers from OAI files
+
+- Run extractIdentifiers.xsl on all oai xml files  
+```
+java -jar C:\Users\mckelvee\Desktop\Migration\saxon\saxon9he.jar -o OAI-ID.txt OAI.xml extractIdentifiers.xsl
+```
+- Sort and concatenate the results in a single file  
+```
+    cat *.txt | sort > all-OAI-Ids)
+```
+
+# Use Sorted IDs to Create Lookup from HathiFiles
+
+Obtain the most recent full (cumulative) version of the HathiFiles  
+```
+C:\Users\mckelvee\Documents\Hathi_Primo\test_run>java -jar parseHathiFiles.jar hathi_full_20160901.txt IdToTitle all-OAI-Ids
+```
+
+    where
+    raw hathifiles file -> hathi_full_20160901.txt
+    lookup output file -> IdToTitle
+    IDs to limit lookup to -> all-OAI-Ids
+    (lookup will also ignore any ID that it doesn't find in hathifiles)
+    (to do : remove  $h[microform] $h[electronic resource]) [This stuff in green is Brain’s note to self, but it is probably arleady taken care of)
+
+- The result file includes 3 data elements, HT Record Number, HathiFiles Title, Gov Docs flag
+- Sort the results  
+```
+sort IdToTitle > IdToTitleSorted
+```
+
+# Extra:  Brian's Steps for Huge Years
 
     java -jar c:\dev\saxon6-5-5\saxon.jar -o 2011_id/2011_a 2011/2011_a extractIdentifiers.xsl
     java -jar c:\dev\saxon6-5-5\saxon.jar -o 2011_id/2011_b 2011/2011_b extractIdentifiers.xsl
@@ -34,6 +62,13 @@ http://quod.lib.umich.edu/cgi/o/oai/oai?verb=ListRecords&metadataPrefix=marc21&s
 # Extra:  Rights Statistics
 
 - parseHathiFiles.pl will generate counts of the access and rights elements values in a HathiFile (for curious minds)
+
+# Create Title Lookup XML file
+
+- Create title look up file:  
+```
+createTitleLookUp.pl  IdToTitleSorted (output will be titleMerge.xml)
+```
 
 # Merge Title Look up file with OAI feed
 
