@@ -5,3 +5,4 @@ XSLTFix/HathiGovDocLookup.xml
 AllGovDocIDs_20140630
 enhanced/*
 !enhanced/.gitkeep
+extracted.xml
