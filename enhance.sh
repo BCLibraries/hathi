@@ -9,7 +9,7 @@ echo "Extracting record numbers"
 for f in $OAIFILES
 do
   name=$(basename $f .xml)
-  saxon-xslt -o $OUTDIR/ids/$name.txt $f extractIdentifiers.xsl
+  saxon -s:$f -xsl:extractIdentifiers.xsl -o:$OUTDIR/ids/$name.txt
 done
 
 # Concatenate all IDs to single file and sort them
@@ -38,4 +38,4 @@ perl createTitleLookup.pl $OUTDIR/IdToTitleSorted
 mv titleMerge.xml $OUTDIR/
 
 # Where does OAI.xml come from?
-saxon-xslt -o $OUTDIR/merged.xml $OUTDIR/OAI.xml mergeHathiFiles.xsl
+saxon -s:$OUTDIR/OAI.xml -xsl:mergeHathiFiles.xsl -o:$OUTDIR/merged.xml
