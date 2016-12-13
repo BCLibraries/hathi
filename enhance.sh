@@ -9,7 +9,7 @@ echo "Extracting record numbers"
 for f in $OAIFILES
 do
   name=$(basename $f .xml)
-  saxon -s:$f -xsl:extractIdentifiers.xsl -o:$OUTDIR/ids/$name.txt
+  saxon -o $OUTDIR/ids/$name.txt $f extractIdentifiers.xsl 
 done
 
 # Concatenate all IDs to single file and sort them
@@ -37,5 +37,11 @@ echo "Creating title lookup file"
 perl createTitleLookup.pl $OUTDIR/IdToTitleSorted
 mv titleMerge.xml $OUTDIR/
 
-# Where does OAI.xml come from?
-saxon -s:$OUTDIR/OAI.xml -xsl:mergeHathiFiles.xsl -o:$OUTDIR/merged.xml
+# Merge titles into harvested record
+for f in $OAIFILES 
+  do name=$(basename $f .xml)
+  echo "Processing $name..."
+  saxon -o $OUTDIR/xml/$name $f mergeHathiFiles.xsl
+  echo "done."
+  mv $f /apps/hathitrust/oai_harvester/harvested/processed/
+done
