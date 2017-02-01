@@ -1,6 +1,6 @@
 # Get MARC Records From Hathi OAI
 
-The first step is to get Hathi MARC records for volumes that are public domain in the US (pdus) from the Hathi OAI feed.
+The first step is to get Hathi MARC records for volumes that are public domain or opened by a rights holder from the Hathi OAI feed.
 
 - Use the [BCLibraries oai_harvester](https://github.com/BCLibraries/oai_harvester) scripts
 - [OAI feed documentation](https://www.hathitrust.org/data)
@@ -9,22 +9,29 @@ The first step is to get Hathi MARC records for volumes that are public domain i
 - Example Record Set:  
 http://quod.lib.umich.edu/cgi/o/oai/oai?verb=ListRecords&metadataPrefix=marc21&set=hathitrust&from=2016-08-01&until=2016-08-31
 
+```sh
+OAIFILES="../oai_harvester/harvested/to-process/*.xml"
+OUTDIR="output"
+```
+
+# Get HathiTrust Record Numbers from OAI files
+
+```sh
+echo "Extracting record numbers..."
+for f in $OAIFILES
+do
+  name=$(basename $f .xml)
+  saxon -o $OUTDIR/ids/$name.txt $f extractIdentifiers.xsl
+done
+echo "Sorting..."
+cat $OUTDIR/ids/*.txt | sort > $OUTDIR/ids/all-OAI-ids.txt
+```
+
 # Use HathiFiles to Enhance OAI MARC Records
 
 - Replace OAI title with HathiFiles title
 - Use Gov Docs flag in HathiFiles to add flag compatible with our local practice
 
-
-# Get HathiTrust Record Numbers from OAI files
-
-- Run extractIdentifiers.xsl on all oai xml files  
-```
-java -jar C:\Users\mckelvee\Desktop\Migration\saxon\saxon9he.jar -o OAI-ID.txt OAI.xml extractIdentifiers.xsl
-```
-- Sort and concatenate the results in a single file  
-```
-    cat *.txt | sort > all-OAI-Ids)
-```
 
 # Use Sorted IDs to Create Lookup from HathiFiles
 
