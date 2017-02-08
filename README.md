@@ -45,7 +45,6 @@ sort $OUTDIR/ids/*.txt  -o $OUTDIR/all-OAI-ids.txt
 java -jar parseHathiFiles.jar $OUTDIR/hathi_full.txt $OUTDIR/IdToTitle $OUTDIR/all-OAI-ids.txt
 sort $OUTDIR/IdToTitle -o $OUTDIR/IdToTitleSorted
 perl TitleLookup.pl $OUTDIR/IdToTitleSorted
-mv titleMerge.xml $OUTDIR/
 ```
 
 # Merge titles in harvested records
