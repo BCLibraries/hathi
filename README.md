@@ -1,4 +1,4 @@
-# Get MARC Records From Hathi OAI
+### Get MARC Records From Hathi OAI
 
 The first step is to get Hathi MARC records for volumes that are public domain or opened by a rights holder from the Hathi OAI feed.
 
@@ -14,18 +14,18 @@ OAIFILES="../oai_harvester/harvested/to-process/*.xml"
 OUTDIR="output"
 ```
 
-# Use HathiFiles to Enhance OAI MARC Records
+### Use HathiFiles to Enhance OAI MARC Records
 
 OAI Marc Records don't include the MARC 245 subfield P or a govdocs indicator. Use the hathifiles metadata to add it (matching against hathitrust record number extracted in previous step).
 
-## Retrieve the [latest hathifile](https://www.hathitrust.org/hathifiles)
+#### Retrieve the [latest hathifile](https://www.hathitrust.org/hathifiles)
 
 ```sh
 curl https://www.hathitrust.org/filebrowser/download/177119 -o $OUTDIR/hathi_full.txt.gz
 gunzip $OUTDIR/hathi_full.txt.gz
 ```
 
-## Get HathiTrust Record Numbers from OAI harvest
+#### Get HathiTrust Record Numbers from OAI harvest
 
 ```sh
 echo "Extracting record numbers..."
@@ -37,7 +37,7 @@ done
 echo "Sorting..."
 sort $OUTDIR/ids/*.txt  -o $OUTDIR/all-OAI-ids.txt
 ```
-## Use Hathitrust record IDs to create ID/title lookup from HathiFiles
+#### Use Hathitrust record IDs to create ID/title lookup from HathiFiles
 
 - The result file includes 3 data elements, HT Record Number, HathiFiles Title, Gov Docs flag
 
@@ -47,7 +47,7 @@ sort $OUTDIR/IdToTitle -o $OUTDIR/IdToTitleSorted
 perl TitleLookup.pl $OUTDIR/IdToTitleSorted
 ```
 
-# Merge titles in harvested records
+### Merge titles in harvested records
 ```sh
 for f in $OAIFILES
   do name=$(basename $f .xml)
@@ -57,7 +57,7 @@ for f in $OAIFILES
 done
 ```
 
-# Compress files and copy to bonnet for harvesting
+### Compress files and copy to bonnet for harvesting
 ```sh
 tar -cvfz hathi_enhanced_2017-02-07.tar.gz $OUTDIR/xml/*.xml
 scp hathi_enhanced_2017-02-07.tar.gz exlibris@bonnnet.bc.edu:primo/hathitrust/
