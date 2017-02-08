@@ -9,11 +9,6 @@ The first step is to get Hathi MARC records for volumes that are public domain o
 - Example Record Set:  
 http://quod.lib.umich.edu/cgi/o/oai/oai?verb=ListRecords&metadataPrefix=marc21&set=hathitrust&from=2016-08-01&until=2016-08-31
 
-```sh
-OAIFILES="../oai_harvester/harvested/to-process/*.xml"
-OUTDIR="output"
-```
-
 ### Use HathiFiles to Enhance OAI MARC Records
 
 OAI Marc Records don't include the MARC 245 subfield P or a govdocs indicator. Use the hathifiles metadata to add it (matching against hathitrust record number extracted in previous step).
@@ -21,6 +16,7 @@ OAI Marc Records don't include the MARC 245 subfield P or a govdocs indicator. U
 #### Retrieve the [latest hathifile](https://www.hathitrust.org/hathifiles)
 
 ```sh
+OUTDIR="output"
 curl https://www.hathitrust.org/filebrowser/download/177119 -o $OUTDIR/hathi_full.txt.gz
 gunzip $OUTDIR/hathi_full.txt.gz
 ```
@@ -28,6 +24,7 @@ gunzip $OUTDIR/hathi_full.txt.gz
 #### Get HathiTrust Record Numbers from OAI harvest
 
 ```sh
+OAIFILES="../oai_harvester/harvested/to-process/*.xml"
 echo "Extracting record numbers..."
 for f in $OAIFILES
 do
