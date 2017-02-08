@@ -2,7 +2,7 @@
 
 OAIFILES="../oai_harvester/harvested/*.xml"
 OUTDIR="enhanced"
-HATHIFILES="https://www.hathitrust.org/filebrowser/download/159922"
+HATHIFILES="https://www.hathitrust.org/filebrowser/download/177119"
 
 # Get HathiTrust Record Numbers from OAI files
 echo "Extracting record numbers"
