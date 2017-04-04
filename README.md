@@ -56,6 +56,6 @@ done
 
 ### Compress files and copy to bonnet for harvesting
 ```sh
-tar -cvfz hathi_enhanced_2017-02-07.tar.gz $OUTDIR/xml/*.xml
+tar cvfz hathi_enhanced_2017-02-07.tar.gz $OUTDIR/xml/*.xml
 scp hathi_enhanced_2017-02-07.tar.gz exlibris@bonnnet.bc.edu:primo/hathitrust/
 ```
